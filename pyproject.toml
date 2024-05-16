@@ -1,9 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "os2apwrapper"
+dynamic = ["version"]
+authors = [
+  { name = "Nicki Kielsen", email = "Nicki.kielsen@brk.dk" },
+]
+description = "Modul til at opdatere fase/status på en process i os2autoprocess"
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.10"',
+    "python-dotenv",
+]
+
+[project.urls]
+Homepage = "https://github.com/BorholmsRegionsKommuneIT/os2apwrapper"
+Issues = "https://github.com/BorholmsRegionsKommuneIT/os2apwrapper/issues"
+
 [tool.ruff]
 target-version = "py37"
 line-length = 140
-
-[build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools_scm]
