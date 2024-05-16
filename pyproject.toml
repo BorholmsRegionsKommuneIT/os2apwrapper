@@ -1,12 +1,21 @@
 [project]
-name = "os2autoprocess"
-dynamic = ["version"]
-description = 'Modul til at opdatere fase/status på en process i os2autoprocess'
-readme = "README.md"
-requires-python = ">=3.7"
+name = "os2apwrapper"
+version = "0.0.1"
 authors = [
   { name = "Nicki Kielsen", email = "Nicki.kielsen@brk.dk" },
 ]
+description = "Modul til at opdatere fase/status på en process i os2autoprocess"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/BorholmsRegionsKommuneIT/os2apwrapper"
+Issues = "https://github.com/BorholmsRegionsKommuneIT/os2apwrapper/issues"
 
 [tool.ruff]
 target-version = "py37"
