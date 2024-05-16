@@ -176,8 +176,8 @@ if __name__ == "__main__":
 
     # PHASES = ["IDEA", "PREANALYSIS", "SPECIFICATION", "DEVELOPMENT", "IMPLEMENTATION", "OPERATION", "DECOMMISSIONED"]
     # STATUSES = ["REJECTED", "FAILED", "PENDING", "INPROGRESS", "NOT_RATED", "NOT_RELEVANT"]
-    # client.update_process(5211, 3, 2)  # test invalid input
-    client.update_process(5211, "DEVELOPMENT", "PENDING")   #test changes
+    client.update_process(5211, 3, 2)  # test invalid input
+    # client.update_process(5211, "DEVELOPMENT", "PENDING")   #test changes
     # client.update_process(5211, "OPERATION", "INPROGRESS")  #previous settings
     client.logout_from_api()
 
