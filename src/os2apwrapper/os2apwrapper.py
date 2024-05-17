@@ -157,7 +157,7 @@ class ApiClient():
                 response = self.session.patch(url, headers=self.headers, json=json_dict)
                 response.raise_for_status()
                 data = response.json()
-                print(f"Sucesfully patched process with process_id={data["id"]}, phase: {data["phase"]}, status: {data["status"]}")
+                print(f"Sucesfully patched process with process_id={data["id"]} with new phase/staus to: phase={data["phase"]}, status={data["status"]}")
             else:
                 print("No new values was supplied, skipped update. Check if the parameters fit inside the constraints of the API")
         except Exception as e:
