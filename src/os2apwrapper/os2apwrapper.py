@@ -18,7 +18,7 @@ class ApiClient():
             self.base_url = "https://www.os2autoproces.eu/"
             self.print_everything = print_everything
 
-            load_dotenv() # Load environment variables, needed to get os.getenv() to work
+            load_dotenv(override=True) # Load environment variables, needed to get os.getenv() to work
             api_key_path = os.getenv("api_key_path") # Read api_key_path from .env
 
             # Use apikey_path to set self.apikey attribute
