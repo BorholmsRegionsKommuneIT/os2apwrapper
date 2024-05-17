@@ -11,15 +11,16 @@ class ApiClient():
     """
     base_url = "https://www.os2autoproces.eu/"
     apikey_path = "" #The path to the file containing the apikey (RAW string)
-    apikey = "" The apikeystring from the apikey_path
-    client = ApiClient(apikey_path)
+    apikey = "" #The apikeystring from the apikey_path
+    client = ApiClient() #print_everything shows sucessful login and logouts, disabled by default
     """
 
-    def __init__(self) -> None:
+    def __init__(self, print_everything=None) -> None:
         """Initialize default attributes needed by the other methods."""
         try:
             self.base_url = "https://www.os2autoproces.eu/"
-            
+            self.print_everything = print_everything
+
             # Read api_key_path from .env
             api_key_path = os.getenv("api_key_path")
 
@@ -60,11 +61,11 @@ class ApiClient():
             response.raise_for_status()  # Raise an exception for error status codes
 
             set_cookie_header = response.headers.get("Set-Cookie")
-            if set_cookie_header:
-                print("Login successful, Set-Cookie header found")
-            else:
-                print("Login successful, no Set-Cookie header")
-            return set_cookie_header
+            if self.print_everything:
+                if set_cookie_header:
+                    print("Login successful, Set-Cookie header found")
+                else:
+                    print("Login successful, no Set-Cookie header")
         except requests.RequestException as e:
             print("Error in log_into_api: ", str(e))
 
@@ -79,8 +80,9 @@ class ApiClient():
             self.session.cookies.clear()  # FIXME: tempoary fix to logout from API
             self.session.close()
             self.session = None
-            if not self.session:
-                print("Logout successful, cleared session cookie and closed")
+            if self.print_everything:
+                if not self.session:
+                    print("Logout successful, cleared session cookie and closed")
         except requests.RequestException as e:
             print("Error in logout_from_api: ", str(e))
 
@@ -154,34 +156,9 @@ class ApiClient():
             if len(json_dict) > 0 and json_dict != {}:
                 response = self.session.patch(url, headers=self.headers, json=json_dict)
                 response.raise_for_status()
-
-                print("Response from api:", response.json())
+                data = response.json()
+                print(f"Sucesfully patched process with process_id={data["id"]}, phase: {data["phase"]}, status: {data["status"]}")
             else:
                 print("No new values was supplied, skipped update. Check if the parameters fit inside the constraints of the API")
         except Exception as e:
             print("Error in 'update_process': ", str(e))
-
-
-### Basic testing of module under development ###
-if __name__ == "__main__":
-    # Instantiate the ApiClient as client
-    # client = ApiClient()
-    client = ApiClient()
-
-    # # Use the class to log into the API
-    # client.log_into_api()
-
-    # Use the class to check the "whoami" endpoint
-    client.who_am_i()
-
-    # PHASES = ["IDEA", "PREANALYSIS", "SPECIFICATION", "DEVELOPMENT", "IMPLEMENTATION", "OPERATION", "DECOMMISSIONED"]
-    # STATUSES = ["REJECTED", "FAILED", "PENDING", "INPROGRESS", "NOT_RATED", "NOT_RELEVANT"]
-    client.update_process(5211, 3, 2)  # test invalid input
-    # client.update_process(5211, "DEVELOPMENT", "PENDING")   #test changes
-    # client.update_process(5211, "OPERATION", "INPROGRESS")  #previous settings
-    client.logout_from_api()
-
-    # Testing logout and login functions
-    # client.logout_from_api()
-    # client.log_into_api()
-    # client.who_am_i()
