@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 import requests
 from typing import Literal, Optional
 
-# Load environment variables, needed to get os.getenv() to work
-load_dotenv()
-
 # Define the ApiClient class
 class ApiClient():
     """
@@ -21,8 +18,8 @@ class ApiClient():
             self.base_url = "https://www.os2autoproces.eu/"
             self.print_everything = print_everything
 
-            # Read api_key_path from .env
-            api_key_path = os.getenv("api_key_path")
+            load_dotenv() # Load environment variables, needed to get os.getenv() to work
+            api_key_path = os.getenv("api_key_path") # Read api_key_path from .env
 
             # Use apikey_path to set self.apikey attribute
             if api_key_path and os.path.exists(api_key_path):
