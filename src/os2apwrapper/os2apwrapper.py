@@ -135,9 +135,7 @@ class ApiClient():
             json_dict = {}
 
             # Fill in the JSON object based on conditionals
-            if (
-                phase and not isinstance(phase, str)
-            ):  # TODO: Should we allow type int as a valid parameter, and check it against a dict/enum type to get the corresponding str value?
+            if phase and not isinstance(phase, str):
                 raise TypeError("Error in update_process: 'phase' must be a string.")
             elif phase and phase not in self.PHASES:
                 raise ValueError("Error in update_process: 'phase' was not a valid phase, check your spelling.")
