@@ -9,5 +9,7 @@ temp/
 .env
 .todo
 venv
+*.egg-info
+dist
 delete_me
 testing.py

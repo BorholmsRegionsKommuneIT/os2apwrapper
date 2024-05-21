@@ -1,2 +1,3 @@
-# Created 08-05-2024
-# Author Nicki Kielsen <Nicki.Kielsen@brk.dk>
+# SPDX-FileCopyrightText: 2024-present Nicki Kielsen <Nicki.Kielsen@brk.dk>
+#
+# SPDX-License-Identifier: MIT

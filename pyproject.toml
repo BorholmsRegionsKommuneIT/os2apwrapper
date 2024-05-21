@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "os2apwrapper"
@@ -15,21 +15,13 @@ license = {file = "LICENSE"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
 ]
 dependencies = [
     "requests",
-    'importlib-metadata; python_version<"3.10"',
     "python-dotenv",
 ]
 dynamic = ["version"]
-
-[tool.hatch]
-
-[tool.hatch.version]
-path = "src/os2apwrapper/__about__.py"
-
-[tool.hatch.metadata]
-allow-direct-references = true
 
 [project.urls]
 Homepage = "https://github.com/BorholmsRegionsKommuneIT/os2apwrapper"
