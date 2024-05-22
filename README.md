@@ -23,10 +23,11 @@ pip install os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwr
 ```
 
 ### Update
-To update you'll need to add the `--force-reinstall` parameter to the pip install command.
+To update you'll need to add the `--force-reinstall` parameter to the pip install command. This command can also be used as the install command.
 ```console
-pip install --upgrade --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
+pip install --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
 ```
+If your project is using older versions of the modules that this project is using, you might need to add the `--update` parameter in between `install` and `--force-reinstall`.
 
 ## License
 
