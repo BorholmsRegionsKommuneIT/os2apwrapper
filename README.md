@@ -10,6 +10,7 @@
 - [os2apwrapper](#os2apwrapper)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
+    - [Update](#update)
   - [License](#license)
   - [How to](#how-to)
     - [Setup](#setup)
@@ -18,7 +19,13 @@
 ## Installation
 
 ```console
-pip install os2apwrapper
+pip install os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
+```
+
+### Update
+To update you'll need to add the `--force-reinstall` parameter to the pip install command.
+```console
+pip install --upgrade --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
 ```
 
 ## License
@@ -47,10 +54,10 @@ api_key_path=yourfilepathtotheapikey.txt
    Note that once you start typing the string for phase/status auto-complete options should show up. These are the only allowed values.
 ```
 # Import module
-from os2apwrapper import ApiClient
+from os2apwrapper import os2apwrapper
 
 # Instantiate the ApiClient as client
-client = ApiClient()
+client = os2apwrapper.ApiClient()
 
 # Change process 5211's phase to 'operation', and status to 'inprogress'
 client.update_process(5211, "OPERATION", "INPROGRESS")
