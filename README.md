@@ -43,7 +43,7 @@ If your project is using older versions of the modules that this project is usin
 api_key_path=yourfilepathtotheapikey.txt
 ```
 ### Use
-1) Add to your python project: `import os2apwrapper`
+1) Add to your python project: `from os2apwrapper import os2apwrapper`
 2) Create a class object like so: 
    ```
    client = os2apwrapper.ApiClass()
