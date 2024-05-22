@@ -45,7 +45,6 @@ class ApiClient():
             self.set_cookie_header = None
             self.session = requests.Session()  # To maintain session cookies
             self.log_into_api()
-            print("Hello from update!")
         except Exception as e:
             print("Error during initialization of ApiClient:", str(e))
 
