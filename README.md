@@ -45,3 +45,13 @@ api_key_path=yourfilepathtotheapikey.txt
    client.update_process(5211, "DEVELOPMENT", "INPROGRESS")
    ```
    Note that once you start typing the string for phase/status auto-complete options should show up. These are the only allowed values.
+```
+# Import module
+from os2apwrapper import ApiClient
+
+# Instantiate the ApiClient as client
+client = ApiClient()
+
+# Change process 5211's phase to 'operation', and status to 'inprogress'
+client.update_process(5211, "OPERATION", "INPROGRESS")
+```
