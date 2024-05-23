@@ -25,7 +25,9 @@ To update you'll need to add the `--force-reinstall` parameter to the pip instal
 ```console
 pip install --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
 ```
-If your project is using an older version, then you might need to add the `--update` parameter in between `install` and `--force-reinstall`.
+If you don't want to also reinstall the dependencies you can add the following parameter `--no-deps`.
+
+If your project is using older versions of the packages that this project is using, you might need to add the `--update` parameter in between `install` and `--force-reinstall`.
 
 ## License
 
@@ -40,11 +42,11 @@ If your project is using an older version, then you might need to add the `--upd
 api_key_path=your/file/path/totheapikey.txt
 ```
 
-2) Import, create a class object and call a class method with the ID of the process you wish to update, along with the new phase and/or status like so:
+5) Import, create a class object and call a class method with the ID of the process you wish to update, along with the new phase and/or status like so:
    ```
    from os2apwrapper import ApiClient
    
-   os2ap = ApiClass()
+   os2ap = ApiClient()
 
    os2ap.update_process(5211, "DEVELOPMENT", "INPROGRESS")
    ```
