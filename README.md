@@ -27,7 +27,7 @@ pip install --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegion
 ```
 If you don't want to also reinstall the dependencies you can add the following parameter `--no-deps`.
 
-If your project is using older versions of the packages that this project is using, you might need to add the `--update` parameter in between `install` and `--force-reinstall`.
+If your project is using older versions of the packages that this project is using, you might need to add the `--upgrade` parameter in between `install` and `--force-reinstall`.
 
 ## License
 
