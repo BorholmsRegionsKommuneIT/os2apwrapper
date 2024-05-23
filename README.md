@@ -36,7 +36,7 @@ If your project is using older versions of the packages that this project is usi
 ## How to use
 1) First you'll need the os2autoprocess apikey. Get it from [Digital Identity](https://www.digital-identity.dk/) 
 2) Now create a file only containing the apikey as plaintext, and copy the absolute path to to this file.
-3) Create a .env file at the root of this project.
+3) Create a .env file at the root of your project, if you don't already have one.
 4) Inside the .env file add a varible called `api_key_path` and give it the filepath as it's value:
 ```
 api_key_path=your/file/path/totheapikey.txt
