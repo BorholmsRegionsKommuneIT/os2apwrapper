@@ -25,7 +25,7 @@ To update you'll need to add the `--force-reinstall` parameter to the pip instal
 ```console
 pip install --force-reinstall os2apwrapper@git+https://github.com/BorholmsRegionsKommuneIT/os2apwrapper@main
 ```
-If you don't want to also reinstall the dependencies you can add the following parameter `--no-deps`.
+If you don't want to also reinstall the dependencies, but only this module you can add the following parameter `--no-deps`.
 
 If your project is using older versions of the packages that this project is using, you might need to add the `--upgrade` parameter in between `install` and `--force-reinstall`.
 
@@ -35,20 +35,15 @@ If your project is using older versions of the packages that this project is usi
 
 ## How to use
 1) First you'll need the os2autoprocess apikey. Get it from [Digital Identity](https://www.digital-identity.dk/) 
-2) Now create a file only containing the apikey as plaintext, and copy the absolute path to to this file.
-3) Create a .env file at the root of your project, if you don't already have one.
-4) Inside the .env file add a varible called `api_key_path` and give it the filepath as it's value:
-```
-api_key_path=your/file/path/totheapikey.txt
-```
+2) Then simply pass your apikey to ApiClient on creation.
 
-5) Import, create a class object and call a class method with the ID of the process you wish to update, along with the new phase and/or status like so:
+3) It should look something like this. Import, create a class object and call a class method with the ID of the process you wish to update, along with the new phase and/or status like so:
    ```
    from os2apwrapper import ApiClient
    
-   os2ap = ApiClient()
+   os2ap = ApiClient(your_api_key)
 
-   os2ap.update_process(5211, "DEVELOPMENT", "INPROGRESS")
+   os2ap.update_process(1234, "DEVELOPMENT", "INPROGRESS")
    ```
 
    Note that once you start typing the string for phase/status auto-complete options should show up. These are the only allowed values.

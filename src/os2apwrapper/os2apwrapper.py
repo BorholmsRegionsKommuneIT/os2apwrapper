@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 import requests
 from typing import Literal, Optional
 
@@ -12,24 +10,15 @@ class ApiClient():
     client = ApiClient() #print_everything shows sucessful login and logouts, disabled by default
     """
 
-    def __init__(self, print_everything=None) -> None:
+    def __init__(self, api_key, print_everything=None) -> None:
         """Initialize default attributes needed by the other methods."""
         try:
             self.base_url = "https://www.os2autoproces.eu/"
             self.print_everything = print_everything
-
-            load_dotenv(override=True) # Load environment variables, needed to get os.getenv() to work
-            api_key_path = os.getenv("api_key_path") # Read api_key_path from .env
-
-            # Use apikey_path to set self.apikey attribute
-            if api_key_path and os.path.exists(api_key_path):
-                with open(api_key_path, "r") as file:
-                    file_contents = file.read()
-                    if not isinstance(file_contents, str):
-                        raise ValueError("File did not contain string!")
-                    self.api_key = file_contents
+            if api_key is not None and api_key != "":
+                self.api_key = api_key
             else:
-                print("File/path does not exist: ", api_key_path)
+                raise ValueError("Pass a valid api_key")
                     
 
             # Set up headers with the API key
